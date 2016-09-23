@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\usepackage{fancyhdr}
+\usepackage{background}
+\usepackage[paperheight=8.89cm,paperwidth=6.35cm,margin=0.6cm,top=22mm,bottom=10mm,headheight=1cm]{geometry}
+
+\backgroundsetup{
+    contents={\includegraphics[width=\paperwidth,height=\paperheight]{background}}
+}
+
+\ifxetex
+\usepackage{fontspec}
+\setmainfont{Mrs Eaves OT}
+\fi
+
+\definecolor{headercolor}{RGB}{88,23,13}
+\definecolor{linecolor}{RGB}{201,173,106}
+
+\sloppy
+\setlength{\headsep}{3mm}
+\pagestyle{fancy}
+\chead{\scshape\scriptsize\spellheader\\[-1.8mm]\Large\color{headercolor}\mbox{\spelltitle}}
+\cfoot{\if\relax\spellsource\relax\else\scriptsize\spellsource\fi}
+\setlength{\parindent}{0pt}
+
+\newenvironment{spell}[7]{
+    \def\spelltitle{#1}
+    \def\spellheader{#2}
+    \def\castrange{#3}
+    \def\casttime{#4}
+    \def\duration{#5}
+    \def\components{#6}
+    \def\spellsource{#7}
+    \begin{minipage}[t][5cm][t]{\textwidth}
+    \begin{minipage}{0.45\textwidth}
+        \centering\footnotesize\scshape{\color{headercolor}
+        Casting time}
+
+        \casttime
+	\end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering\footnotesize\scshape{\color{headercolor}
+        Range}
+
+        \castrange
+	\end{minipage}
+    \\[3mm]
+    \begin{minipage}{0.45\textwidth}
+        \centering\footnotesize\scshape{\color{headercolor}
+        Components}
+
+        \components
+	\end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering\footnotesize\scshape{\color{headercolor}
+        Duration}
+
+        \duration
+	\end{minipage}
+    \vspace{3mm}
+    \headrule
+    \vspace{3mm}
+    \footnotesize
+}{
+    \end{minipage}
+    \newpage
+}
+
+\begin{document}
+\input{spells}
+\end{document}
