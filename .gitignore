@@ -14,10 +14,9 @@
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
-# these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
+*.ps
+*.eps
+*.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -181,3 +180,4 @@ TSWLatexianTemp*
 
 # DnD-Spelldeck
 spells.tex
+__pycache__/
