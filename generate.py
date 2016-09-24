@@ -1,5 +1,6 @@
 import argparse
 import sys
+import textwrap
 from spells import SPELLS
 
 MAX_TEXT_LENGTH = 600
@@ -42,8 +43,8 @@ def print_spell(name, level, school, range, time, ritual, duration, components,
 
     SPELLS_TOTAL += 1
 
-    print("\\begin{spell}{%s}{%s}{%s}{%s}{%s}{%s}{%s}\n%s\n\\end{spell}" %
-        (name, header, range, time, duration, ", ".join(components), source or '', truncated_string))
+    print("\\begin{spell}{%s}{%s}{%s}{%s}{%s}{%s}{%s}\n\n%s\n\n\\end{spell}\n" %
+        (name, header, range, time, duration, ", ".join(components), source or '', textwrap.fill(truncated_string, 80)))
 
 
 if __name__ == '__main__':
