@@ -6,6 +6,13 @@ to make this easier by allowing you to create a deck of spells; a pile of cards
 with all your spells and the most important information about them so you can
 speed up the game.
 
+## Preview
+
+A card looks something like this. As you can see, some (many) cards need to have
+their text truncated because there is simply too much to put on a small card.
+
+![An example of a spell card](http://i.imgur.com/gLl9PwI.png)
+
 ## Usage
 
 The first step is to create the appropriate LaTeX spell list. To do so, use the
