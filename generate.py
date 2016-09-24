@@ -62,11 +62,16 @@ if __name__ == '__main__':
         "-s", "--school", type=str, action='append', dest='schools',
         help="only select spells of a school, can be used multiple times."
     )
+    parser.add_argument(
+        "-n", "--name", type=str, action='append', dest='names',
+        help="select spells with one of several given names."
+    )
     args = parser.parse_args()
 
     classes = set((i.title() for i in args.classes) if args.classes else [])
     levels = set()
     schools = set((i.title() for i in args.schools) if args.schools else [])
+    names = set((i.lower() for i in args.names) if args.names else [])
 
     for level_spec in args.levels or []:
         tmp = level_spec.split('-')
@@ -78,7 +83,8 @@ if __name__ == '__main__':
     for name, spell in sorted(SPELLS.items(), key=lambda x: x[0]):
         if (len(classes) == 0 or len(classes & spell['classes']) > 0) and \
            (len(schools) == 0 or spell['school'] in schools) and \
-           (len(levels) == 0 or spell['level'] in levels):
+           (len(levels) == 0 or spell['level'] in levels) and \
+           (len(names) == 0 or name.lower() in names):
             print_spell(name, **spell)
 
     print('Had to truncate %d out of %d spells at %d characters.' % (SPELLS_TRUNCATED, SPELLS_TOTAL, MAX_TEXT_LENGTH), file=sys.stderr)
