@@ -23,13 +23,16 @@ LEVEL_STRING = {
 
 
 def print_spell(name, level, school, range, time, ritual, duration, components,
-                material, text, source="", **kwargs):
+                material, text, source=None, source_page=None, **kwargs):
     global SPELLS_TRUNCATED, SPELLS_TOTAL
     header = LEVEL_STRING[level].format(
         school=school.lower(), ritual='ritual' if ritual else '').strip()
 
-    if (material is not None):
+    if material is not None:
         text = "Requires " + material + ". " + text
+
+    if source_page is not None:
+        source += ' page %d' % source_page
 
     truncated_string = ""
 
