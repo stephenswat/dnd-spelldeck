@@ -1,7 +1,7 @@
 import argparse
 import sys
 import textwrap
-from spells import SPELLS
+import json
 
 MAX_TEXT_LENGTH = 600
 
@@ -83,6 +83,9 @@ if __name__ == '__main__':
             levels.add(int(tmp[0]))
         elif len(tmp) == 2:
             levels |= set(range(int(tmp[0]), int(tmp[1]) + 1))
+
+    with open('spells.json') as json_data:
+        SPELLS = json.load(json_data)
 
     for name, spell in sorted(SPELLS.items(), key=lambda x: x[0]):
         if (len(classes) == 0 or len(classes & spell['classes']) > 0) and \
