@@ -39,7 +39,7 @@ a Magic: The Gathering card so your sleeves will work!). Then, compile
 `printable.tex` which will arrange them neatly on a sheet of paper so you can
 print them and then cut them to size. I like to use the following command:
 
-    $ latexmk -xelatex tex/cards.tex tex/printable.tex
+    $ latexmk -xelatex -cd tex/cards.tex tex/printable.tex
 
 ### Paper sizes
 
