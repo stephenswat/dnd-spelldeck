@@ -1,7 +1,7 @@
 import argparse
 import sys
 import textwrap
-from spells import SPELLS
+import json
 
 MAX_TEXT_LENGTH = 600
 
@@ -20,6 +20,9 @@ LEVEL_STRING = {
     8: '8th level {school} {ritual}',
     9: '9th level {school} {ritual}',
 }
+
+with open('spells.json') as json_data:
+    SPELLS = json.load(json_data)
 
 
 def truncate_string(string, max_len=MAX_TEXT_LENGTH):
