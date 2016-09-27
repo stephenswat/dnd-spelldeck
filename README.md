@@ -22,16 +22,16 @@ want to be economical you can filter them by class, level or school. Some
 examples of this:
 
     # This simply outputs all possible spells.
-    $ python3 generate.py > spells.tex
+    $ python3 generate.py > tex/spells.tex
 
     # This outputs all spells for bards and fighters
-    $ python3 generate.py -c bard -c fighter > spells.tex
+    $ python3 generate.py -c bard -c fighter > tex/spells.tex
 
     # This outputs all spells of levels 0, 2, 5, 6 and 7
-    $ python3 generate.py -l 0 -l 2 -l 5-7 > spells.tex
+    $ python3 generate.py -l 0 -l 2 -l 5-7 > tex/spells.tex
 
     # This outputs all warlock spells of levels 0 through 3
-    $ python3 generate.py -c warlock -l 0-3 > spells.tex
+    $ python3 generate.py -c warlock -l 0-3 > tex/spells.tex
 
 After this is finished, use your favourite LaTeX compiler to first compile
 `cards.tex` which will produce a 8.89x6.35cm page for every spell (same size as
@@ -39,7 +39,7 @@ a Magic: The Gathering card so your sleeves will work!). Then, compile
 `printable.tex` which will arrange them neatly on a sheet of paper so you can
 print them and then cut them to size. I like to use the following command:
 
-    $ latexmk -xelatex cards.tex printable.tex
+    $ latexmk -xelatex -cd tex/cards.tex tex/printable.tex
 
 ### Paper sizes
 

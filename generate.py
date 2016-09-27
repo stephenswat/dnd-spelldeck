@@ -21,6 +21,22 @@ LEVEL_STRING = {
     9: '9th level {school} {ritual}',
 }
 
+with open('spells.json') as json_data:
+    SPELLS = json.load(json_data)
+
+
+def truncate_string(string, max_len=MAX_TEXT_LENGTH):
+    rv = ""
+
+    for sentence in string.split(".")[:-1]:
+        if len(rv + sentence) < MAX_TEXT_LENGTH - 2:
+            rv += sentence + "."
+        else:
+            rv += ".."
+            break
+
+    return rv
+
 
 def print_spell(name, level, school, range, time, ritual, duration, components,
                 material, text, source=None, source_page=None, **kwargs):
@@ -34,21 +50,44 @@ def print_spell(name, level, school, range, time, ritual, duration, components,
     if source_page is not None:
         source += ' page %d' % source_page
 
-    truncated_string = ""
+    new_text = truncate_string(text)
 
-    for sentence in text.split(".")[:-1]:
-        if len(truncated_string + sentence) < MAX_TEXT_LENGTH:
-            truncated_string += (sentence + ".")
-        else:
-            SPELLS_TRUNCATED += 1
-            truncated_string += ".."
-            break
+    if new_text != text:
+        SPELLS_TRUNCATED += 1
 
     SPELLS_TOTAL += 1
 
     print("\\begin{spell}{%s}{%s}{%s}{%s}{%s}{%s}{%s}\n\n%s\n\n\\end{spell}\n" %
-        (name, header, range, time, duration, ", ".join(components), source or '', textwrap.fill(truncated_string, 80)))
+        (name, header, range, time, duration, ", ".join(components), source or '', textwrap.fill(new_text, 80)))
 
+
+def get_spells(classes=None, levels=None, schools=None, names=None):
+    classes = {i.lower() for i in classes} if classes is not None else None
+    schools = {i.lower() for i in schools} if schools is not None else None
+    names = {i.lower() for i in names} if names is not None else None
+
+    return [
+        (name, spell) for name, spell in sorted(SPELLS.items(), key=lambda x: x[0]) if
+        (classes is None or len(classes & {i.lower() for i in spell['classes']}) > 0) and
+        (schools is None or spell['school'].lower() in schools) and
+        (levels is None or spell['level'] in levels) and
+        (names is None or name.lower() in names)
+    ]
+
+def parse_levels(levels):
+    rv = None
+
+    if levels is not None:
+        rv = set()
+
+        for level_spec in levels:
+            tmp = level_spec.split('-')
+            if len(tmp) == 1:
+                rv.add(int(tmp[0]))
+            elif len(tmp) == 2:
+                rv |= set(range(int(tmp[0]), int(tmp[1]) + 1))
+
+    return rv
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -72,26 +111,7 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
 
-    classes = set((i.title() for i in args.classes) if args.classes else [])
-    levels = set()
-    schools = set((i.title() for i in args.schools) if args.schools else [])
-    names = set((i.lower() for i in args.names) if args.names else [])
-
-    for level_spec in args.levels or []:
-        tmp = level_spec.split('-')
-        if len(tmp) == 1:
-            levels.add(int(tmp[0]))
-        elif len(tmp) == 2:
-            levels |= set(range(int(tmp[0]), int(tmp[1]) + 1))
-
-    with open('spells.json') as json_data:
-        SPELLS = json.load(json_data)
-
-    for name, spell in sorted(SPELLS.items(), key=lambda x: x[0]):
-        if (len(classes) == 0 or len(classes & spell['classes']) > 0) and \
-           (len(schools) == 0 or spell['school'] in schools) and \
-           (len(levels) == 0 or spell['level'] in levels) and \
-           (len(names) == 0 or name.lower() in names):
-            print_spell(name, **spell)
+    for name, spell in get_spells(args.classes, parse_levels(args.levels), args.schools, args.names):
+        print_spell(name, **spell)
 
     print('Had to truncate %d out of %d spells at %d characters.' % (SPELLS_TRUNCATED, SPELLS_TOTAL, MAX_TEXT_LENGTH), file=sys.stderr)
