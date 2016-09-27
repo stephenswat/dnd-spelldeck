@@ -21,7 +21,7 @@ LEVEL_STRING = {
     9: '9th level {school} {ritual}',
 }
 
-with open('spells.json') as json_data:
+with open('data/spells.json') as json_data:
     SPELLS = json.load(json_data)
 
 
