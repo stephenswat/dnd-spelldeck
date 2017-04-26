@@ -217,8 +217,9 @@
             "Wizard"
         ],
         "components": [
-            "S M",
-            "V"
+            "S",
+            "V",
+            "M"
         ],
         "duration": "Concentration, up to 1 hour",
         "level": 8,
