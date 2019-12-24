@@ -22,16 +22,16 @@ want to be economical you can filter them by class, level or school. Some
 examples of this:
 
     # This simply outputs all possible spells.
-    $ python3 generate.py > tex/spells.tex
+    $ ./generate.py > tex/spells.tex
 
     # This outputs all spells for bards and fighters
-    $ python3 generate.py -c bard -c fighter > tex/spells.tex
+    $ ./generate.py -c bard -c fighter > tex/spells.tex
 
     # This outputs all spells of levels 0, 2, 5, 6 and 7
-    $ python3 generate.py -l 0 -l 2 -l 5-7 > tex/spells.tex
+    $ ./generate.py -l 0 -l 2 -l 5-7 > tex/spells.tex
 
     # This outputs all warlock spells of levels 0 through 3
-    $ python3 generate.py -c warlock -l 0-3 > tex/spells.tex
+    $ ./generate.py -c warlock -l 0-3 > tex/spells.tex
 
 After this is finished, use your favourite LaTeX compiler to first compile
 `cards.tex` which will produce a 8.89x6.35cm page for every spell (same size as
