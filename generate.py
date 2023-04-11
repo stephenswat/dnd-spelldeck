@@ -112,10 +112,15 @@ if __name__ == '__main__':
         help="select spells with one of several given names."
     )
     parser.add_argument(
-        "-f", "--filename", type=str, action='append', dest='filename',
+        "-f", "--filename", type=str, action='store', dest='filename',
         help="specify a different filename for the spells data."
     )
     args = parser.parse_args()
+
+    if args.filename != "":
+        # se viene specificato un filename, allora uso quel file come input dei dati
+        with open(args.filename) as json_data:
+            SPELLS = json.load(json_data)
 
     for name, spell in get_spells(args.classes, parse_levels(args.levels), args.schools, args.names):
         print_spell(name, **spell)
