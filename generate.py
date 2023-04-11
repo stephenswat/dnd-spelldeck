@@ -111,6 +111,10 @@ if __name__ == '__main__':
         "-n", "--name", type=str, action='append', dest='names',
         help="select spells with one of several given names."
     )
+    parser.add_argument(
+        "-f", "--filename", type=str, action='append', dest='filename',
+        help="specify a different filename for the spells data."
+    )
     args = parser.parse_args()
 
     for name, spell in get_spells(args.classes, parse_levels(args.levels), args.schools, args.names):
