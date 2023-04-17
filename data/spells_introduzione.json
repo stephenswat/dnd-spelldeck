@@ -1568,31 +1568,6 @@
         "text": "You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage. At Higher Levels: When you cast this spell using a spell slot of 3rd level or higher, you create one additional ray for each slot level above 2nd.",
         "time": "1 action"
     },
-    "Scrying": {
-        "classes": [
-            "Druid",
-            "Paladin",
-            "Cleric",
-            "Bard",
-            "Warlock",
-            "Wizard"
-        ],
-        "components": [
-            "S",
-            "V",
-            "M"
-        ],
-        "duration": "Concentration, up to 10 minutes",
-        "level": 5,
-        "material": "a focus worth at least 1,000 gp, such as a crystal ball, a silver mirror, or a font filled with holy water",
-        "range": "Self",
-        "ritual": false,
-        "school": "Divination",
-        "source": "Player's Handbook",
-        "source_page": 273,
-        "text": "You can see and hear a particular creature you choose that is on the same plane of existence as you. The target must make a Wisdom saving throw, which is modified by how well you know the target and the sort of physical connection you have to it. If a target knows you're casting this spell, it can fail the saving throw voluntarily if it wants to be observed. Knowledge - Save Modifier Secondhand (you have heard of the target) - +5 Firsthand (you have met the target) +0 Familiar (you know the target well) - -5 Connection - Save Modifier Likeness or picture - -2 Possession or garment - -4 Body part, lock of hair, bit of nail, or the like - -10 On a successful save, the target isn't affected, and you can't use this spell against it again for 24 hours. On a failed save, the spell creates an invisible sensor within 10 feet of the target. You can see and hear through the sensor as if you were there. The sensor moves with the target, remaining within 10 feet of it for the duration. A creature that can see invisible objects sees the sensor as a luminous orb about the size of your fist. Instead of targeting a creature, you can choose a location you have seen before as the target of this spell. When you do, the sensor appears at that location and doesn't move.",
-        "time": "10 minutes"
-    },
     "Searing Smite": {
         "classes": [
             "Paladin"
@@ -1827,7 +1802,7 @@
         "text": "This spell creates a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground in an unoccupied space of your choice that you can see within range. The disk remains for the duration, and can hold up to 500 pounds. If more weight is placed on it, the spell ends, and everything on the disk falls to the ground. The disk is immobile while you are within 20 feet of it. If you move more than 20 feet away from it, the disk follows you so that it remains within 20 feet of you. It can more across uneven terrain, up or down stairs, slopes and the like, but it can't cross an elevation change of 10 feet or more. For example, the disk can't move across a 10-foot-deep pit, nor could it leave such a pit if it was created at the bottom. If you move more than 100 feet from the disk (typically because it can't move around an obstacle to follow you), the spell ends.",
         "time": "1 action"
     },
-    "Thaumaturgy": {
+    "Thaumaturgy (1)": {
         "classes": [
             "Cleric"
         ],
@@ -1842,7 +1817,25 @@
         "school": "Transmutation",
         "source": "Player's Handbook",
         "source_page": 282,
-        "text": "You manifest a minor wonder, a sign of supernatural power, within range. You create one of the following magical effects within range. \u00e2\u20ac\u00a2 Your voice booms up to three times as loud as normal for 1 minute. \u00e2\u20ac\u00a2 You cause flames to flicker, brighten, dim, or change color for 1 minute. \u00e2\u20ac\u00a2 You cause harmless tremors in the ground for 1 minute. \u00e2\u20ac\u00a2 You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers. \u00e2\u20ac\u00a2 You instantaneously cause an unlocked door or window to fly open or slam shut. \u00e2\u20ac\u00a2 You alter the appearance of your eyes for 1 minute. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.",
+        "text": "You manifest a minor wonder, a sign of supernatural power, within range. (one of the following) - Your voice booms up to three times as loud as normal (1 minute) - You cause flames to flicker, brighten, dim, or change color (1 minute). - You cause harmless tremors in the ground (1 minute). - You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers. - You instantaneously cause an unlocked door or window to fly open or slam shut. - You alter the appearance of your eyes for 1 minute. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.",
+        "time": "1 action"
+    },
+    "Thaumaturgy (2)": {
+        "classes": [
+            "Cleric"
+        ],
+        "components": [
+            "V"
+        ],
+        "duration": "Up to 1 minute",
+        "level": 0,
+        "material": null,
+        "range": "30 feet",
+        "ritual": false,
+        "school": "Transmutation",
+        "source": "Player's Handbook",
+        "source_page": 282,
+        "text": "You manifest a minor wonder, a sign of supernatural power, within range. (one of the following) - Your voice booms up to three times as loud as normal (1 minute) - You cause flames to flicker, brighten, dim, or change color (1 minute). - You cause harmless tremors in the ground (1 minute). - You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers. - You instantaneously cause an unlocked door or window to fly open or slam shut. - You alter the appearance of your eyes for 1 minute. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.",
         "time": "1 action"
     },
     "Thorn Whip": {
@@ -2012,5 +2005,5 @@
         "source_page": 289,
         "text": "The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra 1d6 psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be frightened of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell.",
         "time": "1 bonus action"
-    },
+    }
 }
